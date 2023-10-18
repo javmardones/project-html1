@@ -1,0 +1,307 @@
+:root{
+    --blanco:#ffffff;
+    --oscuro: #212121;
+    --primario:#ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClro: #dfe9f3;
+
+} /* Es para almacenar variables en CSS*/
+
+/* GLOBALES*/
+html{
+    font-size: 62.5%;
+    box-sizing: border-box; /* CSS de google*/
+    scroll-snap-type: y mandatory;
+}
+
+*, *:before, *:after { /*Se aplica cuando lo llaman*/
+    box-sizing: inherit;
+  } /* Me permite que al definir el padding no tenga que calcular*/
+
+body{
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Krub', sans-serif; 
+    background-image: linear-gradient(to top, var(--grisClro) 0%, var(--blanco) 100% ); /*Fondo degrade desde abajo hacia arriba*/
+}
+
+.contenedor {
+    max-width: 120rem; /* max-width se declara para una mejor navegación en la pantalla*/
+    margin: 0 auto;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) { /* medida para un tablet*/
+    .boton{
+        width: auto;
+    }
+}
+
+.boton:hover {
+    cursor: pointer; /*Le pone la manito al botón en un input*/
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* TIPOGRAFÍA*/
+
+h1{
+    font-size: 3.8rem;
+}
+h2{
+    font-size: 2.8rem;
+}
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3 {
+    text-align: center;
+}
+/***** Definir estas dos líneas me permitirá usar la medida de REM sin problemas para pixeles altos(pantallas grandes) *****/
+    /*****text-align: center;  Siempre la última orden es la que tomará como válida *****/ 
+    /*font-size: 3rem;*/
+    
+/*UTILIDADES*/
+.w-sm-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+
+/* TITULOS*/
+.titulo span {
+    font-size: 2rem;
+}
+
+
+/* NAVEGACIÓN PRINCIPAL*/
+
+.nav-bg {
+    background-color: var(--secundario);
+
+}
+.navegacion-principal {
+    display: flex;
+    flex-direction: column; /*cuando defines esto, se bloque alinear al centro lo demas*/
+    justify-content: space-between;
+    align-items: center;/*Para alinear siempre definir esto*/  
+}
+
+@media (min-width: 768px) { /* medida para una tablet*/
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+@media (max-width: 768px) {  /*medida para un laptop*/
+    .contenedor.sombra {
+        margin: 0 1rem; /* Agregar el margen que desees en pantallas pequeñas */
+    }
+}
+/* @media (min-width: 1400px) { medida para un pantallas grandes
+    
+}*/
+
+.navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem; 
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/*Comenzamos con el contenido*/
+
+/* HERO */
+
+.hero{
+    background-image: url(../Imagenes/laptop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; /*definir el tamaño de la img*/
+    height: 450px;
+    /*padding: 20px; Siempre considerar el modelo caja*/
+    position: relative; /*posicionar al padre*/
+    margin-bottom: 2rem;
+}
+
+/*Vamos a sombrear la imagen del body*/
+.contenido-hero{
+    position: absolute;/*Defino el hijo*/
+    /*background-color: rgba(0, 0, 0, .7); Sintaxis anterior*/
+    background-color: rgb( 0 0 0 / 70%);
+    width: 100%;
+    height: 100%;
+    display: flex; /*alineas verticalmente con justify content, a no ser que lo definas como columna*/
+    flex-direction: column; /*Si se define esto, debe usar align items*/
+    align-items: center;
+    justify-content: center;/*Ordenar horizontalmente también*/
+
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+/*SERVICIOS*/
+
+/*SCROLL Snap*/
+.servicios, 
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+@media (min-width: 768px) { /*medida para un pantallas grandes*/
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /*Dividimos el 100% en 3= 33.3% 33.3% 33.3% O tambien 1fr 1fr 1fr*/
+        column-gap: 1rem; /*Crea la separación de las columnas del grid*/
+    }
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex; /*Uno frente al otro*/
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*FORMULARIO CONTACTO*/
+
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100%);/*Utilizar el valor más pequeño*/
+    margin: 0 auto; /*usalo en elementos como estos, cuyo padre no es un display flex*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 27rem;
+        column-gap: 1.2rem;
+    
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) { /*Trabajamos con arreglos*/
+    grid-column: 1 / 3;
+    }
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius:  .5rem;
+}
+
+/*FOOTER*/
+.footer {
+    text-align: center;
+}
+
+
+
+
+
+

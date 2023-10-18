@@ -1,0 +1,55 @@
+:root{
+    --blanco:#ffffff;
+    --oscuro: #212121;
+    --primario:#ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+
+} /* Es para almacenar variables en CSS*/
+html{
+    font: size 62.5%; 
+
+}
+
+body{
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Krub', sans-serif;
+    
+}
+/***** Definir estas dos líneas me permitirá usar la medida de REM sin problemas para pixeles altos(pantallas grandes) *****/ 
+.titulo{
+    text-align: center; /***** Siempre la última orden es la que tomará como válida *****/ 
+    font-size: 3rem;
+    
+}
+.titulo span {
+    font-size: 2rem;
+}
+
+.contenedor {
+    width: 120rem;
+    margin: 0 auto;
+}
+.nav-bg {
+    background-color: var(--secundario);
+
+}
+.navegacion-principal {
+    display: flex;
+    justify-content: space-around;
+    
+}
+.navegacion-principal a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 1rem;
+    
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+
